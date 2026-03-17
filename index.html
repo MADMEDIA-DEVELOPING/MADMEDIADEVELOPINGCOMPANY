@@ -46,7 +46,8 @@
       <li><a class="nav-link active" data-num="1" data-panel="0">Home</a></li>
       <li><a class="nav-link" data-num="2" data-panel="1">About</a></li>
       <li><a class="nav-link" data-num="3" data-panel="2">Services</a></li>
-      <li><a class="nav-link" data-num="4" data-panel="3">Contact</a></li>
+      <li><a class="nav-link" data-num="4" data-panel="3">Work</a></li>
+      <li><a class="nav-link" data-num="5" data-panel="4">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span>
@@ -59,7 +60,8 @@
       <li><a class="m-link" data-num="1" data-panel="0">Home</a></li>
       <li><a class="m-link" data-num="2" data-panel="1">About</a></li>
       <li><a class="m-link" data-num="3" data-panel="2">Services</a></li>
-      <li><a class="m-link" data-num="4" data-panel="3">Contact</a></li>
+      <li><a class="m-link" data-num="4" data-panel="3">Work</a></li>
+      <li><a class="m-link" data-num="5" data-panel="4">Contact</a></li>
     </ul>
   </div>
 
@@ -68,7 +70,8 @@
     <button class="dot active" data-panel="0" aria-label="Home"></button>
     <button class="dot" data-panel="1" aria-label="About"></button>
     <button class="dot" data-panel="2" aria-label="Services"></button>
-    <button class="dot" data-panel="3" aria-label="Contact"></button>
+    <button class="dot" data-panel="3" aria-label="Work"></button>
+    <button class="dot" data-panel="4" aria-label="Contact"></button>
   </div>
 
   <!-- Section labels -->
@@ -111,8 +114,16 @@
       <div class="planet-ring r2"></div>
       <div class="planet-glow"></div>
     </div>
-    <!-- Panel 3: Green/Teal planet -->
+    <!-- Panel 3: Purple/Pink planet (New for Work) -->
     <div class="planet p3">
+      <div class="planet-core"></div>
+      <div class="planet-glow"></div>
+      <div class="planet-moons">
+        <div class="moon m1"></div>
+      </div>
+    </div>
+    <!-- Panel 4: Green/Teal planet (Contact moved here) -->
+    <div class="planet p4">
       <div class="planet-core"></div>
       <div class="planet-ring"></div>
       <div class="planet-glow"></div>
@@ -181,9 +192,20 @@
         <span class="section-tag">About us</span>
         <div class="about-grid">
           <div class="ag-left">
+            <!-- NEW: Profile Picture Container -->
+            <div class="profile-container" style="margin-bottom: 2rem; position: relative; width: fit-content;">
+              <!-- Înlocuiește src cu calea către poza ta reală -->
+              <img src="me.jpeg" alt="Madalin"
+                style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,0.1);"
+                onerror="this.style.backgroundColor='#333'">
+              <div class="profile-decoration"
+                style="position: absolute; inset: -10px; border: 1px dashed rgba(6,182,212,0.4); border-radius: 50%; animation: spin 10s linear infinite;">
+              </div>
+            </div>
+
             <h2 class="panel-h2">Hey!<br />We're<br /><span class="gradient-text">MADMEDIA</span></h2>
             <p class="about-tagline">A creative studio obsessed with craft.</p>
-            <button class="btn-outline" onclick="document.querySelector('.dot[data-panel=\'3\']').click()">Work with us
+            <button class="btn-outline" onclick="document.querySelector('.dot[data-panel=\'4\']').click()">Work with us
               →</button>
           </div>
           <div class="ag-right">
@@ -312,8 +334,64 @@
       </div>
     </section>
 
-    <!-- ===== PANEL 3 : CONTACT ===== -->
+    <!-- ===== PANEL 3 : WORK & CLIENTS (NEW) ===== -->
     <section class="panel" id="panel-3">
+      <div class="panel-inner">
+        <span class="section-tag">Selected Works</span>
+        <h2 class="panel-h2">Recent <span class="gradient-text">Projects</span></h2>
+
+        <!-- Projects Grid -->
+       <div class="cards-grid"
+  style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+
+  <!-- Project 1 -->
+  <div class="card tilt-card" style="min-height: 280px; display: flex; flex-direction: column; overflow: hidden; padding: 0;">
+    <div class="card-glow"></div>
+    <img src="ankascan.png" alt="Customer Data Collection Website" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+    <div style="padding: 1rem;">
+      <h3>Customer Data Collection Website</h3>
+      <p style="font-size: 0.9rem; opacity: 0.8;">Full Stack Development</p>
+    </div>
+  </div>
+
+  <!-- Project 2 -->
+  <div class="card tilt-card" style="min-height: 280px; display: flex; flex-direction: column; overflow: hidden; padding: 0;">
+    <div class="card-glow"></div>
+    <img src="noss lifestyle.png" alt="Fitness Trainer Website" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+    <div style="padding: 1rem;">
+      <h3>Fitness Trainer Website</h3>
+      <p style="font-size: 0.9rem; opacity: 0.8;">UI/UX Design</p>
+    </div>
+  </div>
+
+  <!-- Project 3 -->
+  <div class="card tilt-card" style="min-height: 280px; display: flex; flex-direction: column; overflow: hidden; padding: 0;">
+    <div class="card-glow"></div>
+    <img src="ftc statistics.png" alt="FTC Statistics In Romania" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+    <div style="padding: 1rem;">
+      <h3>FTC Statistics In Romania</h3>
+      <p style="font-size: 0.9rem; opacity: 0.8;">Data Structure And Analytics</p>
+    </div>
+  </div>
+
+</div>
+        <!-- Clients Strip -->
+        <div class="clients-section">
+          <p
+            style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.6; margin-bottom: 1.5rem;">
+            Trusted by Clients</p>
+          <div class="clients-row" style="display: flex; gap: 2rem; opacity: 0.7; flex-wrap: wrap;">
+            <!-- Replace text with Logo SVGs/Images -->
+            <span style="font-weight: 700; font-size: 1.2rem;">Anca Bulzan - AnKaScan</span>
+            <span style="font-weight: 700; font-size: 1.2rem;">Laurențiu Spătaru - N.O.S.S. Lifestyle</span>
+            <span style="font-weight: 700; font-size: 1.2rem;">Ion Popa - FTC Statistics In Romania</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PANEL 4 : CONTACT ===== -->
+    <section class="panel" id="panel-4">
       <div class="panel-inner contact-inner">
         <span class="section-tag">Don't be a stranger</span>
         <h2 class="contact-title">

@@ -9,9 +9,9 @@
   /* ================================================
      CONFIG & BODY HEIGHT SETUP
   ================================================ */
-  const PANELS = 4;
-  const PANEL_NAMES = ['Home', 'About', 'Services', 'Contact'];
-  const PANEL_NUMS = ['01', '02', '03', '04'];
+  const PANELS = 5;
+  const PANEL_NAMES = ['Home', 'About', 'Services', 'Work', 'Contact'];
+  const PANEL_NUMS = ['01', '02', '03', '04', '05'];
 
   // Dynamically computed so resize stays correct
   function getTotalHeight() { return PANELS * window.innerHeight; }
@@ -260,6 +260,7 @@
   const GRID_COLORS = [
     'rgba(124,58,237,.15)', 'rgba(6,182,212,.15)',
     'rgba(249,115,22,.15)', 'rgba(16,185,129,.15)',
+    'rgba(236,72,153,.15)', // Color for the new 5th panel (Pink/Magenta)
   ];
   function updateGrid(rawPanel) {
     const next = Math.min(Math.ceil(rawPanel), PANELS - 1);
@@ -387,7 +388,7 @@
      "WORK WITH US" BUTTON in About panel
   ================================================ */
   const workBtn = document.getElementById('workWithUsBtn');
-  if (workBtn) workBtn.addEventListener('click', () => goToPanel(3));
+  if (workBtn) workBtn.addEventListener('click', () => goToPanel(4)); // Updated to point to Contact (last panel)
 
   /* ================================================
      ROTATING HERO TEXT
