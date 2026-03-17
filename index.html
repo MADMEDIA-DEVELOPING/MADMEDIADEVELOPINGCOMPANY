@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MADMEDIA DEVELOPING — Creative Digital Studio</title>
+  <meta name="description"
+    content="MADMEDIA DEVELOPING — a creative digital studio building legendary web experiences, UI/UX design, digital marketing, and brand identity." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="loading">
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Intro Loader -->
+  <div class="intro-loader" id="introLoader">
+    <div class="intro-content">
+      <div class="intro-logo">
+        <span class="logo-mad">MAD</span><span class="logo-media">MEDIA</span>
+      </div>
+      <p class="intro-label">Heading to MADMEDIA's universe...</p>
+      <div class="intro-bar">
+        <div class="intro-fill" id="introFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo" id="navLogoLink">
+      <span class="logo-mad">MAD</span><span class="logo-media">MEDIA</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link active" data-num="1" data-panel="0">Home</a></li>
+      <li><a class="nav-link" data-num="2" data-panel="1">About</a></li>
+      <li><a class="nav-link" data-num="3" data-panel="2">Services</a></li>
+      <li><a class="nav-link" data-num="4" data-panel="3">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a class="m-link" data-num="1" data-panel="0">Home</a></li>
+      <li><a class="m-link" data-num="2" data-panel="1">About</a></li>
+      <li><a class="m-link" data-num="3" data-panel="2">Services</a></li>
+      <li><a class="m-link" data-num="4" data-panel="3">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Section dots indicator -->
+  <div class="section-dots" id="sectionDots" aria-hidden="true">
+    <button class="dot active" data-panel="0" aria-label="Home"></button>
+    <button class="dot" data-panel="1" aria-label="About"></button>
+    <button class="dot" data-panel="2" aria-label="Services"></button>
+    <button class="dot" data-panel="3" aria-label="Contact"></button>
+  </div>
+
+  <!-- Section labels -->
+  <div class="section-label" id="sectionLabel">
+    <span class="label-num">01</span>
+    <span class="label-name" id="labelName">Home</span>
+  </div>
+
+  <!-- ============================================================
+       SPACESHIP VIEWPORT — fixed, perspective container
+  ============================================================ -->
+  <canvas id="spaceCanvas"></canvas>
+
+  <!-- Planet backgrounds (one per panel, fixed, JS drives opacity) -->
+  <div class="planet-layer" id="planetLayer" aria-hidden="true">
+    <!-- Panel 0: Violet planet -->
+    <div class="planet p0">
+      <div class="planet-core"></div>
+      <div class="planet-ring"></div>
+      <div class="planet-ring r2"></div>
+      <div class="planet-glow"></div>
+      <div class="planet-moons">
+        <div class="moon m1"></div>
+        <div class="moon m2"></div>
+      </div>
+    </div>
+    <!-- Panel 1: Cyan/Blue planet -->
+    <div class="planet p1">
+      <div class="planet-core"></div>
+      <div class="planet-ring"></div>
+      <div class="planet-glow"></div>
+      <div class="planet-moons">
+        <div class="moon m1"></div>
+      </div>
+    </div>
+    <!-- Panel 2: Orange/Red planet -->
+    <div class="planet p2">
+      <div class="planet-core"></div>
+      <div class="planet-ring"></div>
+      <div class="planet-ring r2"></div>
+      <div class="planet-glow"></div>
+    </div>
+    <!-- Panel 3: Green/Teal planet -->
+    <div class="planet p3">
+      <div class="planet-core"></div>
+      <div class="planet-ring"></div>
+      <div class="planet-glow"></div>
+      <div class="planet-moons">
+        <div class="moon m1"></div>
+        <div class="moon m2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Horizon grid (always present but color changes) -->
+  <div class="horizon-grid" id="horizonGrid"></div>
+
+  <!-- ============================================================
+       HORIZONTAL TRACK — slides left/right driven by vertical scroll
+  ============================================================ -->
+  <div class="h-track" id="hTrack">
+
+    <!-- ===== PANEL 0 : HOME ===== -->
+    <section class="panel" id="panel-0">
+      <div class="panel-inner hero-inner">
+        <div class="hero-eyebrow">
+          <span class="pulse-dot"></span>
+          <span>Creative Digital Studio</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="line-w"><em class="line-t">We Build</em></span>
+          <span class="line-w"><em class="line-t">Digital</em></span>
+          <span class="line-w gradient-text"><em class="line-t">Legends.</em></span>
+        </h1>
+        <div class="rotating-row">
+          <span class="rot-prefix">We do&nbsp;</span>
+          <div class="rot-box">
+            <span class="rot-item active">Web Development</span>
+            <span class="rot-item">UI/UX Design</span>
+            <span class="rot-item">Digital Marketing</span>
+            <span class="rot-item">Brand Identity</span>
+          </div>
+        </div>
+        <div class="scroll-hint">
+          <div class="sh-line"></div>
+          <span>Scroll to explore</span>
+          <svg class="sh-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="snum" data-target="120">0</span><sup>+</sup>
+            <p>Projects</p>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat"><span class="snum" data-target="50">0</span><sup>+</sup>
+            <p>Clients</p>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat"><span class="snum" data-target="5">0</span><sup>+</sup>
+            <p>Years</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PANEL 1 : ABOUT ===== -->
+    <section class="panel" id="panel-1">
+      <div class="panel-inner">
+        <span class="section-tag">About us</span>
+        <div class="about-grid">
+          <div class="ag-left">
+            <h2 class="panel-h2">Hey!<br />We're<br /><span class="gradient-text">MADMEDIA</span></h2>
+            <p class="about-tagline">A creative studio obsessed with craft.</p>
+            <button class="btn-outline" onclick="document.querySelector('.dot[data-panel=\'3\']').click()">Work with us
+              →</button>
+          </div>
+          <div class="ag-right">
+            <p class="body-text">
+              Since our founding, design and technology have fueled everything we do.
+              We merge creative vision with technical precision to build digital experiences
+              that are not just functional — they're truly <em class="hl">memorable</em>.
+            </p>
+            <p class="body-text">
+              Every project tells its own story. We shape narratives that resonate with users
+              long after they've experienced them. From 3D web to pixel-perfect brand identities —
+              we do it all.
+            </p>
+            <div class="tech-tags">
+              <span>Next.js</span><span>React</span><span>Three.js</span><span>GSAP</span>
+              <span>Figma</span><span>WordPress</span><span>Node.js</span>
+              <span>Motion Design</span><span>SEO</span><span>Social Media</span><span>HTML5</span>
+              <span>CSS3</span><span>JavaScript</span><span>TypeScript</span><span>Python</span>
+              <span>C++</span><span>Unity</span><span>Unreal Engine</span><span>Java</span>
+              <span>C#</span><span>PHP</span><span>SQL</span><span>Machine Learning</span>
+              <span>Artificial Intelligence</span><span>Blockchain</span><span>Cybersecurity</span>
+              <span>Cloud Computing</span><span>Internet of Things</span><span>Big Data</span>
+              <span>Data Science</span><span>Data Analytics</span><span>Data Visualization</span>
+              <span>Data Engineering</span><span>Data Architecture</span><span>Data Governance</span>
+              <span>Data Quality</span><span>Data Integration</span><span>Data Migration</span>
+              <span>Data Transformation</span><span>Data Validation</span><span>Data Cleansing</span>
+              <span>Data Enrichment</span><span>Data Lineage</span><span>AI Generated Content</span>
+              <span>Marketing Strategies</span><span>Digital Marketing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PANEL 2 : SERVICES ===== -->
+    <section class="panel" id="panel-2">
+      <div class="panel-inner">
+        <span class="section-tag">What we do</span>
+        <h2 class="panel-h2">Our <span class="gradient-text">Services</span></h2>
+        <div class="cards-grid">
+
+          <div class="card tilt-card">
+            <div class="card-glow"></div>
+            <div class="card-num">01</div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3>Web Development</h3>
+            <p>Custom websites and web apps. Fast, scalable, stunning.</p>
+            <div class="chips"><span>Frontend</span><span>Backend</span><span>3D Web</span></div>
+          </div>
+
+          <div class="card tilt-card">
+            <div class="card-glow"></div>
+            <div class="card-num">02</div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Interfaces that feel like art. From wireframe to prototype.</p>
+            <div class="chips"><span>Figma</span><span>Prototyping</span><span>Research</span></div>
+          </div>
+
+          <div class="card tilt-card">
+            <div class="card-glow"></div>
+            <div class="card-num">03</div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>Data-driven campaigns that actually convert.</p>
+            <div class="chips"><span>PPC</span><span>Analytics</span><span>Content</span></div>
+          </div>
+
+          <div class="card tilt-card">
+            <div class="card-glow"></div>
+            <div class="card-num">04</div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <h3>Brand Identity</h3>
+            <p>Logos, colors, typography — a language impossible to forget.</p>
+            <div class="chips"><span>Logo</span><span>Branding</span><span>Style Guide</span></div>
+          </div>
+
+          <div class="card tilt-card">
+            <div class="card-glow"></div>
+            <div class="card-num">05</div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </div>
+            <h3>Social Media</h3>
+            <p>Content, strategy, and growth that builds real community.</p>
+            <div class="chips"><span>Instagram</span><span>TikTok</span><span>LinkedIn</span></div>
+          </div>
+
+          <div class="card tilt-card">
+            <div class="card-glow"></div>
+            <div class="card-num">06</div>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <h3>SEO Optimization</h3>
+            <p>Rank higher. Get found. Customers can't miss you.</p>
+            <div class="chips"><span>On-Page</span><span>Technical</span><span>Links</span></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PANEL 3 : CONTACT ===== -->
+    <section class="panel" id="panel-3">
+      <div class="panel-inner contact-inner">
+        <span class="section-tag">Don't be a stranger</span>
+        <h2 class="contact-title">
+          Ready to start<br />your project? Let's build<br />
+          <span class="gradient-text">something legendary.</span>
+        </h2>
+        <div class="contact-actions">
+          <button class="email-btn" id="emailCopyBtn">
+            <span id="emailBtnText">madmedia96@gmail.com</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>66
+          </button>
+          <a href="tel:+40 752 077 891" class="btn-primary">Book a Free Discovery Call →</a>
+        </div>
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/madmediadevelopingcompany/" class="soc-link" target="_blank"
+            rel="noopener noreferrer">Instagram</a><span class="sep">·</span>
+          <a href="https://github.com/MADMEDIA-DEVELOPING" class="soc-link" target="_blank"
+            rel="noopener noreferrer">GitHub</a><span class="sep">·</span>
+          <!-- <a href="https://github.com/PROFILUL_TAU" class="soc-link" target="_blank"
+            rel="noopener noreferrer">GitHub</a> -->
+        </div>
+        <p class="footer-txt">
+          Designed and developed with ❤️ by <strong>MADMEDIA DEVELOPING</strong> © 2026. All rights reserved.
+        </p>
+      </div>
+    </section>
+
+  </div><!-- /h-track -->
+
+  <!-- Warp flash overlay for hard transitions -->
+  <div class="warp-flash" id="warpFlash"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
